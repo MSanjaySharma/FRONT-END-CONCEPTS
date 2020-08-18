@@ -1,0 +1,19 @@
+let const
+template literal
+arrow function
+default parameters
+concise obj properties
+concise obj method
+object destructuring
+array destructuring
+class keyword
+
+
+lexical closures
+
+A closure is a pairing of:
+
+    A function, and
+    ********A reference to that function's outer scope (lexical environment)**********///////////IMPORTANT
+
+A lexical environment is part of every execution context (stack frame), and is a map between identifiers (ie. local variable names) and values.

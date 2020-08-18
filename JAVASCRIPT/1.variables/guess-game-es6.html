@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Guess Game</title>
+  </head>
+  <body>
+    <script>
+      const name = prompt("Enter your name");
+      console.log("Welcome to the guess game " + name);
+
+      // camel casing - targetNumber - c styled
+      // snake casing - target_number - python styled
+      // pascal casing - TargetNumber - class
+      // kebab casing - target-number - files
+      const targetNumber = Math.ceil(Math.random() * 100);
+      console.log(targetNumber);
+      const maxGuesses = 3;
+      let playerGuessCount = 0; // initialization
+
+      // loops - intialization, condition, increment / decrementation
+      while (playerGuessCount < maxGuesses) {
+        // condition
+        var guess = prompt("Guess my number");
+        //
+        if (guess < targetNumber) {
+          console.log("OOPS!!! Your guess was Low");
+        } else if (guess > targetNumber) {
+          console.log("OOPS!!! Your guess was high");
+        } else if (guess == targetNumber) {
+          console.log("Good Job. You guessed my number");
+          break; // loop control
+        }
+        playerGuessCount = playerGuessCount + 1; // playerGuessCount += 1 || playerGuessCount++ // incrementation
+      }
+
+      if (playerGuessCount == maxGuesses) {
+        console.log(
+          "Sorry. You didn't get my number. My number was " + targetNumber
+        );
+      }
+    </script>
+  </body>
+</html>
