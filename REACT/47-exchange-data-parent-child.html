@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      const rootHandle = document.getElementById("root");
+
+      class ComponentOne extends React.Component {
+        state = {
+          total: 100,
+        };
+
+        render() {
+          return (
+            <div>
+              <h2>Component One - {this.state.total}</h2>
+              <ComponentTwo total={this.state.total} />
+              <ComponentThree />
+            </div>
+          );
+        }
+      }
+
+      class ComponentThree extends React.Component {
+        render() {
+          return (
+            <div>
+              <h2>hello there</h2>
+            </div>
+          );
+        }
+      }
+
+      function ComponentTwo(props) {
+        return (
+          <div>
+            <h2>Component Two - {props.total} </h2>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<ComponentOne />, rootHandle);
+    </script>
+  </body>
+</html>

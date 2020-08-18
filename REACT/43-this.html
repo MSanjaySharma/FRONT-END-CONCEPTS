@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      const rootHandle = document.getElementById("root");
+
+      class Counter extends React.Component {
+        constructor() {
+          console.log("constructor");
+          super();
+          this.state = {
+            count: 0,
+          };
+          this.handleDown = this.handleDown.bind(this);
+          // 1. bind in the constructor
+        }
+
+        componentDidMount() {
+          console.log("component did mount", this);
+        }
+
+        handleDown() {
+          console.log("handle down", this); // current object
+          this.setState((prevState) => {
+            return {
+              count: prevState.count - 1,
+            };
+          });
+        }
+
+        // 2 - make event handler as arrow function
+        handleClick = () => {
+          console.log("handle click", this);
+          this.setState((prevState) => {
+            return {
+              count: prevState.count + 1,
+            };
+          });
+        };
+
+        render() {
+          console.log("render", this);
+          return (
+            <div>
+              <h1> {this.state.count}</h1>
+              <button onClick={this.handleDown}> down </button>
+              <button onClick={this.handleClick}> up </button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Counter />, rootHandle);
+    </script>
+  </body>
+</html>

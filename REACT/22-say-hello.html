@@ -1,0 +1,45 @@
+<html>
+  <title> </title>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      function Message(props) {
+        //event handler / listener
+        const sayHello = () => {
+          alert("hello");
+        };
+        const random = () => {
+          alert(Math.round(Math.random() * 100));
+        };
+        const dateTime = () => {
+          const now = new Date();
+          alert(now);
+        };
+        return (
+          <div>
+            <p>example for event handleres</p>
+            <button onMouseOver={sayHello}>greet</button>
+            <button onClick={random}>generate random</button>
+            <button onClick={dateTime}>show date and time</button>
+          </div>
+        );
+      }
+
+      const ele = (
+        <div>
+          <Message />
+        </div>
+      );
+
+      ReactDOM.render(ele, document.getElementById("root"));
+    </script>
+  </body>
+</html>

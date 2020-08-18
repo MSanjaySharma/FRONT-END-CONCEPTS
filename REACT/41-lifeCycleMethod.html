@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      const rootHandle = document.getElementById("root");
+      //life cycle method limited only to class component
+
+      class UsersList extends React.Component {
+        constructor() {
+          console.log("constructor");
+          super();
+          this.state = {
+            users: [],
+          };
+        }
+
+        //Life cycle methods - will get called only after first render
+        componentDidMount() {
+          console.log("component did mount");
+          const url = "https://jsonplaceholder.typicode.com/users";
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", url);
+          xhr.send();
+          xhr.onload = () => {
+            const users = JSON.parse(xhr.responseText);
+            this.setState({ users });
+          };
+        }
+
+        render() {
+          console.log("render");
+          return (
+            <div>
+              <h2>Listing Users - {this.state.users.length}</h2>
+              {this.state.users.length === 0 ? (
+                ""
+              ) : (
+                <ul>
+                  {this.state.users.map((ele, index) => (
+                    <li key={index}>{ele.name}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<UsersList />, rootHandle);
+    </script>
+  </body>
+</html>

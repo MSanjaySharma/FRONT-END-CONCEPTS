@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      const rootHandle = document.getElementById("root");
+      class Registration extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            username: "",
+            email: "",
+            password: "",
+          };
+        }
+
+        handleChange = (e) => {
+          //here the value property is not available on names ex. e.target.
+          console.log(e.target);
+          this.setState({
+            //prop : value
+            [e.target.name]: e.target.value,
+          });
+        };
+
+        handleSubmit = (event) => {
+          event.preventDefault();
+          //only on submit the value of the name property is available it is not available on the go during updation in handleChange
+          console.log(event.target);
+          console.log(event.target.username);
+          console.log(event.target.username.value);
+          console.log(event.target.email.value);
+          console.log(event.target.password.value);
+        };
+
+        render() {
+          return (
+            <div>
+              <h2>Register with us</h2>
+              <form onSubmit={this.handleSubmit}>
+                <label>username</label>
+                <input
+                  name="username"
+                  type="text"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
+                <br />
+
+                <label>email</label>
+                <input
+                  name="email"
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
+                <br />
+
+                <label>password</label>
+                <input
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+                <br />
+
+                <input type="submit" value="submit" />
+              </form>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Registration />, rootHandle);
+    </script>
+  </body>
+</html>

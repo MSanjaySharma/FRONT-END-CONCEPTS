@@ -1,0 +1,54 @@
+<html>
+  <title> </title>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      const rootHandle = document.getElementById("root");
+      class Counter extends React.Component {
+        constructor() {
+          super(); //parent constructor has to be called before access to the this keyword
+          this.state = {
+            count: 0,
+          };
+        }
+
+        handleClick = () => {
+          //can we update the state directly - yes
+          //should we update the state directly - no
+
+          //consle.log(this.state)
+
+          //why?? if we change directly the state value changes but the changed value is not displayed on UI, because the component is not re rendered;
+
+          //how?? we update the value of state using setState
+          //setState- it will change the state value and also re render the component , by which we can see new data on screen
+
+          this.setState(function (prevState) {
+            return {
+              count: prevState.count++,
+            };
+          });
+        };
+
+        render() {
+          return (
+            <div>
+              <h1>{this.state.count}</h1>
+              <button onClick={this.handleClick}>up</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Counter />, rootHandle);
+    </script>
+  </body>
+</html>

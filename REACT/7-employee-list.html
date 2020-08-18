@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>
+      players-html
+    </title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      const employees = [
+        { id: "emp001", name: "abhi" },
+        { id: "emp002", name: "sahana" },
+        { id: "emp003", name: "srujan" },
+      ];
+      const ele = (
+        <div>
+          <h1> Listing Employees - {employees.length}</h1>
+          <ol>
+            {
+              employees.map((e) => {
+                return <li>{`${e.name}(${e.id})`}</li>;
+              }) //inside the JSX semicolon is not allowed ; gives a error as only single statements of js are allowed at once inside {} braces;
+            }
+          </ol>
+        </div>
+      );
+      //undefined and falsy values cant be rendered to show on a webpage
+      ReactDOM.render(ele, document.getElementById("root"));
+    </script>
+  </body>
+</html>

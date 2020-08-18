@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      class Hello extends React.Component {
+        render() {
+          return React.createElement("div", null, `Hello ${this.props.toWhat}`);
+        }
+      }
+
+      ReactDOM.render(
+        React.createElement(Hello, { toWhat: "World" }, null),
+        document.getElementById("root")
+      );
+    </script>
+  </body>
+</html>

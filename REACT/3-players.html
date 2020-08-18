@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>
+      players-html
+    </title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      const players = ["virat", "ashwin", "sachin", "dhoni"];
+      players.sort().reverse();
+      const ele = (
+        <div>
+          <h1> Listing players -{players.length}</h1>
+          <ul>
+            <li>{players[0]}</li>
+            <li>{players[1]}</li>
+            <li>{players[2]}</li>
+            <li>{players[3]}</li>
+          </ul>
+        </div>
+      );
+      //undefined and falsy values cant be rendered to show on a webpage
+      ReactDOM.render(ele, document.getElementById("root"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<html>
+  <title> </title>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      const tasks = [
+        { id: 1, title: "server deploy", completed: false },
+        { id: 2, title: "db backup", completed: true },
+        { id: 3, title: "gather client requirements", completed: true },
+      ];
+      //****************worst approach so far***********************
+      function TasksTable(props) {
+        return (
+          <div>
+            <h3>LISTING TASKS - {props.data.length}</h3>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>title</th>
+                  <th>status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {props.data.map((ele) => (
+                  <tr>
+                    <td>{ele.id}</td>
+                    <td>T{ele.id}</td>
+                    <td>{ele.completed ? "completed" : "not completed"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+
+      function CompletedTasksTable(props) {
+        return (
+          <div>
+            <h3>
+              LISTING COMPLETED TASKS -{" "}
+              {props.data.filter((ele) => ele.completed === true).length}
+            </h3>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>title</th>
+                  <th>status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {props.data
+                  .filter((ele) => ele.completed === true)
+                  .map((ele) => (
+                    <tr>
+                      <td>{ele.id}</td>
+                      <td>T{ele.id}</td>
+                      <td>{ele.completed ? "completed" : "not completed"}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+      function NotCompletedTasksTable(props) {
+        return (
+          <div>
+            <h3>
+              LISTING NOT COMPLETED TASKS -{" "}
+              {props.data.filter((ele) => ele.completed === false).length}
+            </h3>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>title</th>
+                  <th>status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {props.data
+                  .filter((ele) => ele.completed === false)
+                  .map((ele) => (
+                    <tr>
+                      <td>{ele.id}</td>
+                      <td>T{ele.id}</td>
+                      <td>{ele.completed ? "completed" : "not completed"}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+
+      const ele = (
+        <div>
+          <TasksTable data={tasks} />
+          <CompletedTasksTable data={tasks} />
+          <NotCompletedTasksTable data={tasks} />
+        </div>
+      );
+
+      ReactDOM.render(ele, document.getElementById("root"));
+    </script>
+  </body>
+</html>

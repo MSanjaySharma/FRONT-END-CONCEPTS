@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      const rootHandle = document.getElementById("root");
+
+      class UsersList extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            users: [],
+          };
+        }
+
+        handleClick = () => {
+          const url = "https://jsonplaceholder.typicode.com/users";
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", url);
+          xhr.send();
+          xhr.onload = () => {
+            const users = JSON.parse(xhr.responseText);
+            this.setState({ users });
+          };
+        };
+
+        render() {
+          return (
+            <div>
+              <h2>Listing Users - {this.state.users.length}</h2>
+              {this.state.users.length === 0 ? (
+                ""
+              ) : (
+                <ul>
+                  {this.state.users.map((ele, index) => (
+                    <li key={index}>{ele.name}</li>
+                  ))}
+                </ul>
+              )}
+
+              <button onClick={this.handleClick}>Fetch Users</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<UsersList />, rootHandle);
+    </script>
+  </body>
+</html>

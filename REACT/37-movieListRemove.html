@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- https://unpkg.com/react@16.13.1/umd/react.development.js -->
+    <script src="./js/react.development.js"></script>
+    <!-- https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- https://unpkg.com/babel-standalone@6.26.0/babel.js -->
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      const rootHandle = document.getElementById("root");
+
+      class MovieList extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            movies: [
+              { id: 1, name: "The Godfather", watched: false },
+              { id: 2, name: "Kill Bill", watched: true },
+              { id: 3, name: "Bourne Ultimatum", watched: false },
+            ],
+          };
+        }
+
+        handleRemove = (id) => {
+          const confirmRemove = confirm("Are you sure?");
+          if (confirmRemove) {
+            this.setState(function (prevState) {
+              return { movies: prevState.movies.filter((ele) => ele.id != id) };
+            });
+          }
+        };
+
+        render() {
+          return (
+            <div>
+              <h1>MovieList-{this.state.movies.length}</h1>
+              <ul>
+                {this.state.movies.map((movies, index) => {
+                  return (
+                    <li key={index}>
+                      {movies.name}
+                      <button
+                        onClick={() => {
+                          this.handleRemove(movies.id);
+                        }}
+                      >
+                        remove
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MovieList />, rootHandle);
+    </script>
+  </body>
+</html>

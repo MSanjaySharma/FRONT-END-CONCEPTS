@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+    <script type="text/babel">
+      const rootHandle = document.getElementById("root");
+
+      //localstorage - create a new key value pair
+      localStorage.setItem("name", "arjun");
+      localStorage.setItem("age", 26);
+
+      //how to read value from local storage
+      const name = localStorage.getItem("name");
+      console.log(name);
+
+      const company = localStorage.getItem("company");
+      console.log(company); //null
+
+      //remove a key value pair
+      //localStorage.removeItem("age");
+
+      //completely clear local storage
+      //localStorage.clear();
+
+      //store object/array object inside local
+      //to store we need to convert it into a JSON
+      const users = JSON.stringify([
+        { id: 1, name: "john" },
+        { id: 2, name: "sam" },
+      ]);
+      localStorage.setItem("users", users);
+
+      //read that information
+      console.log(JSON.parse(localStorage.getItem(users)));
+
+      const ele = <div></div>;
+
+      ReactDOM.render(ele, rootHandle);
+    </script>
+  </body>
+</html>
