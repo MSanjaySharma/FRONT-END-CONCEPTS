@@ -1,6 +1,8 @@
+import { TOGGLE_DARK_MODE } from "../types/darkModeTypes";
+
 //TOGGLE DARK MODE
 export const setDarkMode = (value) => {
-  return { type: "TOGGLE_DARK_MODE", payload: value };
+  return { type: TOGGLE_DARK_MODE, payload: value };
 };
 
 export const toggleDarkMode = (value) => {
