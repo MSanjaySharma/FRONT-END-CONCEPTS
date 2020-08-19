@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Header from "./components/layout/Header";
-import { Home } from "./pages";
+import { Home, CounterRedux, CounterContext } from "./pages";
 
 function App() {
   return (
@@ -13,6 +13,8 @@ function App() {
 
         <Switch>
           <Route path="/" component={Home} exact={true} />
+          <Route path="/counterRedux" component={CounterRedux} exact={true} />
+          <Route path="/counterContext" component={CounterContext} exact={true} />
         </Switch>
       </BrowserRouter>
     </div>

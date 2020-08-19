@@ -7,10 +7,12 @@ import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 
 //import reducers
 import darkModeReducer from "../reducers/darkModeReducer";
+import counterReducer from "../reducers/counterReducer";
 
 //COMBINING ALL REDUCERS
 const combinedReducer = combineReducers({
   darkMode: darkModeReducer,
+  count: counterReducer,
   //ADD OTHER REDUCERS HERE
 });
 
@@ -29,7 +31,7 @@ const storage = require("redux-persist/lib/storage").default;
 
 const persistConfig = {
   key: "root",
-  whitelist: ["darkMode"], // add reducers to perisist ex:"user"
+  whitelist: ["darkMode", "count"], // add reducers to perisist ex:"user"
   storage, // if needed, use a safer storage
   stateReconciler: autoMergeLevel2,
 };

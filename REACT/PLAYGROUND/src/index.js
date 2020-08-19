@@ -8,6 +8,7 @@ import { store, persistor } from "./redux/store/configureStore";
 
 import Loader from "./utils/components/Loader";
 import "./styles/globalStyles/link.css";
+import { CountProvider } from "./context/CountContext";
 
 function MyApp() {
   store.subscribe(() => {
@@ -17,7 +18,9 @@ function MyApp() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={<Loader />}>
-        <AppWrapper />
+        <CountProvider>
+          <AppWrapper />
+        </CountProvider>
       </PersistGate>
     </Provider>
   );
