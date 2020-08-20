@@ -55,10 +55,10 @@ export default function StickyFooter({ modified }) {
       <footer className={classes.footer}>
         <Container maxWidth="sm">
           <Typography align="center" variant="body1">
-            Made with{" "}
+            Made with
             <span role="img" aria-label="image">
               ❤️
-            </span>{" "}
+            </span>
             from React .
           </Typography>
           <Copyright />
