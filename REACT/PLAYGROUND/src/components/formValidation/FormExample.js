@@ -226,6 +226,7 @@ const FormExample = () => {
                 fullWidth
                 variant="contained"
                 color="secondary"
+                style={{marginBottom:"3vh"}}
               >
                 Reset
               </Button>
